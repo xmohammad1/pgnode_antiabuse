@@ -88,7 +88,8 @@ for subnet in "${DENIED_OUTBOUND[@]}"; do
     ufw deny out to "$subnet" > /dev/null
     echo -e "  [-] Outbound to $subnet ${RED}Blocked${NC}"
 done
-
+sudo ufw logging off
+sudo sed -i 's+/etc/ufw/sysctl.conf+/etc/sysctl.conf+gI' /etc/default/ufw
 echo -e "${YELLOW}[*] Enabling UFW and applying changes...${NC}"
 ufw --force enable
 systemctl enable ufw > /dev/null 2>&1
