@@ -47,6 +47,8 @@ ALLOWED_PORTS=(
     "42538"
     "3350"
     "2083"
+    "53"
+    "123"
 )
 
 ufw allow "$SSH_PORT/tcp" > /dev/null
